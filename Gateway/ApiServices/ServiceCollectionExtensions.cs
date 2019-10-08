@@ -23,6 +23,10 @@ namespace DrakeLambert.RefitTutorial.Gateway.ApiServices
             // Weather Api
             var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
             services.Configure<WeatherApiOptions>(configuration.GetSection("ApiServices:WeatherApi"));
+            services.AddTransient<WeatherApiAuthenticationHandler>();
+            services.AddRefitClient<IWeatherApi>()
+                .AddHttpMessageHandler<WeatherApiAuthenticationHandler>()
+                .ConfigureHttpClient(options => options.BaseAddress = new Uri("http://api.openweathermap.org"));
 
             return services;
         }
