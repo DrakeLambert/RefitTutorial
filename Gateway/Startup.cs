@@ -29,7 +29,7 @@ namespace DrakeLambert.RefitTutorial.Gateway
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = typeof(Startup).Assembly.FullName, Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = typeof(Startup).Namespace, Version = "v1" });
             });
 
             services.AddApiServices();
